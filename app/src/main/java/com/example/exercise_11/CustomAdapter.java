@@ -12,9 +12,9 @@ import java.util.Random;
 
 public class CustomAdapter extends BaseAdapter {
     Context context;
-    ArrayList<Integer> images;
+    ArrayList<ImageObject> images;
     LayoutInflater inflter;
-    public CustomAdapter(Context applicationContext, ArrayList<Integer> images) {
+    public CustomAdapter(Context applicationContext, ArrayList<ImageObject> images) {
         this.context = applicationContext;
         this.images = images;
         inflter = (LayoutInflater.from(applicationContext));
@@ -37,7 +37,8 @@ public class CustomAdapter extends BaseAdapter {
         ImageView icon = (ImageView) view.findViewById(R.id.icon); // get the reference of ImageView
         Random rand = new Random();
         int pickedImg = rand.nextInt(images.size());
-        icon.setImageResource(images.get(pickedImg)); // set logo images
+        ImageObject object = images.get(pickedImg);
+        icon.setImageResource(object.getImageID()); // set logo images
         return view;
     }
 }

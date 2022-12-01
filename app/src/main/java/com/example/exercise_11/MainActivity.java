@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox notRobot;
     private ImageButton refreshBtn;
 
-    ArrayList<Integer> images = new ArrayList<>();
+    ArrayList<ImageObject> images = new ArrayList<>();
     CustomAdapter customAdapter;
+    ArrayList<ImageObject> selectedImages = new ArrayList<>();
 //    private ArrayAdapter<Integer> customAdapter;
 
     @Override
@@ -35,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
         refreshBtn = findViewById(R.id.refreshIB);
         verifyBtn.setVisibility(View.INVISIBLE);
 
-        images.add(R.drawable.img1);
-        images.add(R.drawable.img2);
-        images.add(R.drawable.img3);
-        images.add(R.drawable.img4);
-        images.add(R.drawable.img5);
-        images.add(R.drawable.img6);
-        images.add(R.drawable.img7);
-        images.add(R.drawable.img8);
-        images.add(R.drawable.img9);
+        images.add(new ImageObject(R.drawable.img1,true));
+        images.add(new ImageObject(R.drawable.img2,true));
+        images.add(new ImageObject(R.drawable.img3,true));
+        images.add(new ImageObject(R.drawable.img4,true));
+        images.add(new ImageObject(R.drawable.img5,false));
+        images.add(new ImageObject(R.drawable.img6,false));
+        images.add(new ImageObject(R.drawable.img7,false));
+        images.add(new ImageObject(R.drawable.img8,false));
+        images.add(new ImageObject(R.drawable.img9,false));
 
        customAdapter = new CustomAdapter(getApplicationContext(), images);
         imageListGridView.setAdapter(customAdapter);
@@ -52,13 +53,24 @@ public class MainActivity extends AppCompatActivity {
         imageListGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                ImageObject selectedItem = (ImageObject) parent.getItemAtPosition(position);
+                selectedImages.add(selectedItem);
             }
         });
 
         refreshBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 customAdapter.notifyDataSetChanged();
+            }
+        });
+
+        verifyBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                for (int i = 0 ; i < selectedImages.size() ; i++){
+
+                }
+
             }
         });
     }

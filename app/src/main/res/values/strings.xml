@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Exercise_11</string>
+    <string name="app_name">MT</string>
+    <string name="verify">Verify</string>
+    <string name="notRobot">I\'m not a robot</string>
 </resources>

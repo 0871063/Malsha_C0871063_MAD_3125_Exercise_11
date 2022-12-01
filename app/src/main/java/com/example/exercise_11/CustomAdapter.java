@@ -35,9 +35,7 @@ public class CustomAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.activity_gridview, null); // inflate the layout
         ImageView icon = (ImageView) view.findViewById(R.id.icon); // get the reference of ImageView
-        Random rand = new Random();
-        int pickedImg = rand.nextInt(images.size());
-        ImageObject object = images.get(pickedImg);
+        ImageObject object = images.get(i);
         icon.setImageResource(object.getImageID()); // set logo images
         return view;
     }
